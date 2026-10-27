@@ -2,10 +2,10 @@
    공통 머리말(메뉴)과 꼬리말 — 메뉴를 바꾸려면 여기만 수정하세요.
    ========================================================= */
 const LAB_NAME = "Laboratory of Bacterial Physiology";
-const LOGO = "images/logo.jpg";   // 로고 파일
-// images 폴더에 파일이 없을 때 임시로 기존 Wix 사이트의 이미지를 불러옵니다.
-// (Wix 사이트를 닫기 전에 이미지를 images 폴더에 저장해 두세요.)
-const LOGO_FALLBACK = "https://static.wixstatic.com/media/2c36ff_04457c0f1efb4724a0f5949392546292~mv2.jpg/v1/crop/x_89,y_0,w_500,h_76/fill/w_343,h_52,al_c,q_80/logo.jpg";
+// 맨 위 작은 제목 (원래 사이트의 SNU MEDICINE). 로고 이미지를 쓰려면
+// images/logo.png 를 넣고 LOGO_IMG = "images/logo.png" 로 바꾸세요.
+const TOP_LINE = ["SNU", "MEDICINE"];
+const LOGO_IMG = "";
 const MENU = [
   ["Research", "index.html"],
   ["Publications", "publications.html"],
@@ -24,7 +24,9 @@ const FOOTER = "© " + new Date().getFullYear() + " Yeom Lab. All rights reserve
   header.innerHTML = `
     <div class="header-inner">
       <a class="brand" href="index.html">
-        <img src="${LOGO}" alt="Yeom Lab logo" onerror="this.onerror=null;this.src='${LOGO_FALLBACK}'">
+        ${LOGO_IMG
+          ? `<img class="brand-logo" src="${LOGO_IMG}" alt="${TOP_LINE.join(" ")}">`
+          : `<span class="brand-top"><span class="t1">${TOP_LINE[0]}</span> <span class="t2">${TOP_LINE[1]}</span></span>`}
         <span class="lab-name">${LAB_NAME}</span>
       </a>
       <button class="menu-btn" aria-label="메뉴 열기">☰</button>

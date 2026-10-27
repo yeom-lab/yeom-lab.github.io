@@ -9,7 +9,7 @@
   --line: #e4e4e4;
   --accent: #1f4e79;      /* 메뉴 강조색 / 링크색 */
   --accent-soft: #eef3f8;
-  --max: 980px;
+  --max: 1200px;
 }
 
 * { box-sizing: border-box; }
@@ -158,4 +158,73 @@ ol.pubs li { margin-bottom: 14px; }
   .person { grid-template-columns: 1fr; }
   .members-grid .grid { grid-template-columns: 1fr; }
   .contact-grid { grid-template-columns: 1fr; }
+}
+
+/* ---------- Contact (affiliations + cards) ---------- */
+.affil-list { margin: 0; padding-left: 20px; }
+.affil-list li { margin-bottom: 4px; }
+.contact-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.contact-card { border: 1px solid var(--line); padding: 18px 20px; }
+.contact-card h2 { margin: 0 0 8px; font-size: 17px; color: var(--accent); }
+.contact-card p { margin: 0 0 8px; font-size: 15px; }
+@media (max-width: 760px) { .contact-cards { grid-template-columns: 1fr; } }
+
+
+/* =========================================================
+   원래 사이트 스타일: 큰 연구실 이름 + 오른쪽 메뉴 + 청록 회색 배경
+   ========================================================= */
+:root {
+  --band: #7d9e9b;        /* 본문 뒤 배경색 */
+  --teal: #3faf9a;        /* // 표시, 현재 메뉴 색 */
+  --title: #4d5d66;       /* 연구실 이름 색 */
+}
+body { background: var(--band); }
+.site-header { background: #fff; border-bottom: 0; }
+.header-inner {
+  display: block; position: relative;
+  padding: 26px 24px 0; max-width: var(--max);
+}
+.brand { display: inline-flex; flex-direction: column; align-items: flex-start; gap: 0; }
+.brand-logo { height: 54px; width: auto; }
+.brand-top {
+  font-family: "Cinzel", "Trajan Pro", Georgia, serif;
+  font-size: 44px; font-weight: 600; letter-spacing: 3px; line-height: 1.1;
+}
+.brand-top .t1 { color: #2e3a52; }
+.brand-top .t2 { color: #6f8f86; }
+.brand .lab-name {
+  font-size: 42px; font-weight: 400; color: var(--title);
+  letter-spacing: .5px; line-height: 1.3; margin-top: 4px;
+}
+.nav { margin-top: 10px; }
+.nav ul { justify-content: flex-end; gap: 0; }
+.nav li + li a { border-left: 1px solid #cfd6d8; }
+.nav a {
+  display: block; padding: 8px 14px 12px; font-size: 17px; color: #8a9499;
+  border-bottom: 0;
+}
+.nav a:hover { color: var(--teal); }
+.nav a.active { color: var(--teal); border-bottom: 0; }
+
+main.wrap {
+  background: #fff; max-width: var(--max);
+  padding: 32px 24px 56px; margin: 12px auto 0;
+}
+h1.page-title { color: #3c4a52; }
+h1.page-title::after { color: var(--teal); }
+.pub-year, .contact-card h2 { color: var(--teal); }
+.question { border-left-color: var(--teal); }
+a { color: #2f7f72; }
+.site-footer { border-top: 0; color: #eef3f2; }
+
+@media (max-width: 760px) {
+  .header-inner { padding: 18px 16px 12px; }
+  .brand-top { font-size: 26px; letter-spacing: 2px; }
+  .brand .lab-name { font-size: 22px; line-height: 1.3; }
+  .brand-logo { height: 34px; }
+  .menu-btn { position: absolute; right: 16px; top: 22px; }
+  .nav { margin-top: 12px; }
+  .nav li + li a { border-left: 0; }
+  .nav a { padding: 10px 0; border-bottom: 1px solid var(--line); }
+  main.wrap { margin-top: 0; padding: 28px 16px 40px; }
 }
