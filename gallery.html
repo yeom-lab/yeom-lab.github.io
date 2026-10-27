@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gallery | Laboratory of Bacterial Physiology</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="wrap">
+    <h1 class="page-title">Gallery</h1>
+
+    <!-- 사진 올리는 방법
+         1) 사진 파일을 images/gallery 폴더에 넣습니다. (예: 2026-lab-dinner.jpg)
+         2) 아래 <figure>…</figure> 한 덩어리를 복사해 맨 위에 붙이고
+            파일 이름과 설명만 바꿉니다. 최신 사진을 위에 두면 됩니다.
+         * 사진은 가로 1600px 이하로 줄여서 올리면 페이지가 빨리 열립니다. -->
+
+    <div class="gallery">
+      <figure>
+        <img src="images/gallery/sample1.jpg" alt="Lab photo" loading="lazy">
+        <figcaption>2026 · Lab members</figcaption>
+      </figure>
+      <figure>
+        <img src="images/gallery/sample2.jpg" alt="Conference" loading="lazy">
+        <figcaption>2026 · Conference</figcaption>
+      </figure>
+      <figure>
+        <img src="images/gallery/sample3.jpg" alt="Lab outing" loading="lazy">
+        <figcaption>2025 · Lab outing</figcaption>
+      </figure>
+      <figure>
+        <img src="images/gallery/sample4.jpg" alt="Graduation" loading="lazy">
+        <figcaption>2025 · Graduation</figcaption>
+      </figure>
+    </div>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
