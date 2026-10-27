@@ -228,3 +228,8 @@ a { color: #2f7f72; }
   .nav a { padding: 10px 0; border-bottom: 1px solid var(--line); }
   main.wrap { margin-top: 0; padding: 28px 16px 40px; }
 }
+
+.contact-cards.two { grid-template-columns: 1fr 1fr; align-items: start; }
+.contact-card h3 { margin: 14px 0 4px; font-size: 15px; font-weight: 600; color: #3c4a52; }
+.contact-card h2 + h3 { margin-top: 0; }
+@media (max-width: 760px) { .contact-cards.two { grid-template-columns: 1fr; } }
