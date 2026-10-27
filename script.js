@@ -4,8 +4,8 @@
 const LAB_NAME = "Laboratory of Bacterial Physiology";
 // 맨 위 작은 제목 (원래 사이트의 SNU MEDICINE). 로고 이미지를 쓰려면
 // images/logo.png 를 넣고 LOGO_IMG = "images/logo.png" 로 바꾸세요.
-const TOP_LINE = ["SNU", "Medicine"];
-const LOGO_IMG = "";
+const TOP_LINE = ["SNU", "MEDICINE"];
+const LOGO_IMG = "images/logo.png";
 const MENU = [
   ["Research", "index.html"],
   ["Publications", "publications.html"],
@@ -25,7 +25,7 @@ const FOOTER = "© " + new Date().getFullYear() + " Yeom Lab. All rights reserve
     <div class="header-inner">
       <a class="brand" href="index.html">
         ${LOGO_IMG
-          ? `<img class="brand-logo" src="${LOGO_IMG}" alt="${TOP_LINE.join(" ")}">`
+          ? `<img class="brand-logo" src="${LOGO_IMG}" alt="${TOP_LINE.join(" ")}" onerror="this.outerHTML='<span class=&quot;brand-top&quot;>${TOP_LINE.join(" ")}</span>'">`
           : `<span class="brand-top"><span class="t1">${TOP_LINE[0]}</span> <span class="t2">${TOP_LINE[1]}</span></span>`}
         <span class="lab-name">${LAB_NAME}</span>
       </a>

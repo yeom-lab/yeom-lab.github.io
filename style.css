@@ -237,3 +237,20 @@ a { color: #2f7f72; }
 /* SNU Medicine 글자체: Playfair Display (SNU 정자 + Medicine 기울임) */
 .brand-top { font-family: "Playfair Display", Georgia, serif; font-weight: 500; letter-spacing: 2px; }
 .brand-top .t2 { font-style: italic; letter-spacing: 1px; }
+
+/* 원래 사이트 글자체: 로고는 이미지, 나머지는 Verdana 계열 */
+body { font-family: Verdana, "DejaVu Sans", Tahoma, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif; font-size: 15px; }
+.brand-logo { height: 46px; width: auto; display: block; }
+.brand .lab-name {
+  font-family: Verdana, "DejaVu Sans", Tahoma, sans-serif;
+  color: #607776; font-size: 40px; letter-spacing: 0; margin-top: 6px;
+}
+h1.page-title { font-family: Verdana, "DejaVu Sans", Tahoma, sans-serif; }
+@media (max-width: 760px) {
+  .brand-logo { height: 28px; }
+  .brand .lab-name { font-size: 20px; }
+}
+
+/* SNU MEDICINE 로고 (휘장 포함) */
+.brand-logo { height: 58px; }
+@media (max-width: 760px) { .brand-logo { height: 34px; max-width: 75vw; object-fit: contain; object-position: left; } }
