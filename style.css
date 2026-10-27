@@ -254,3 +254,8 @@ h1.page-title { font-family: Verdana, "DejaVu Sans", Tahoma, sans-serif; }
 /* SNU MEDICINE 로고 (휘장 포함) */
 .brand-logo { height: 58px; }
 @media (max-width: 760px) { .brand-logo { height: 34px; max-width: 75vw; object-fit: contain; object-position: left; } }
+
+/* Research 첫 화면 글자 크기 */
+.research .lead { font-size: 18px; line-height: 1.75; }
+.research .question { font-size: 20px; }
+@media (max-width: 760px) { .research .lead { font-size: 16px; } .research .question { font-size: 17px; } }
