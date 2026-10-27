@@ -4,7 +4,7 @@
 const LAB_NAME = "Laboratory of Bacterial Physiology";
 // 맨 위 작은 제목 (원래 사이트의 SNU MEDICINE). 로고 이미지를 쓰려면
 // images/logo.png 를 넣고 LOGO_IMG = "images/logo.png" 로 바꾸세요.
-const TOP_LINE = ["SNU", "MEDICINE"];
+const TOP_LINE = ["SNU", "Medicine"];
 const LOGO_IMG = "";
 const MENU = [
   ["Research", "index.html"],

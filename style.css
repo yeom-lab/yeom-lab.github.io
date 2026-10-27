@@ -233,3 +233,7 @@ a { color: #2f7f72; }
 .contact-card h3 { margin: 14px 0 4px; font-size: 15px; font-weight: 600; color: #3c4a52; }
 .contact-card h2 + h3 { margin-top: 0; }
 @media (max-width: 760px) { .contact-cards.two { grid-template-columns: 1fr; } }
+
+/* SNU Medicine 글자체: Playfair Display (SNU 정자 + Medicine 기울임) */
+.brand-top { font-family: "Playfair Display", Georgia, serif; font-weight: 500; letter-spacing: 2px; }
+.brand-top .t2 { font-style: italic; letter-spacing: 1px; }
