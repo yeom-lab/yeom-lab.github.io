@@ -300,3 +300,25 @@ main.wrap { width: calc(100% - 200px); padding-left: 44px; padding-right: 44px; 
   .slide-btn { width: 32px; height: 32px; font-size: 18px; }
 }
 @media (prefers-reduced-motion: reduce) { .slideshow .slide { transition: none; } }
+
+/* ---------- Gallery: 연도별 묶음 + 사진 비율 그대로 ---------- */
+.gallery-year { margin-bottom: 36px; }
+.gallery-year .pub-year { margin-top: 8px; }
+.gallery { display: block; columns: 3 280px; column-gap: 16px; }
+.gallery figure { break-inside: avoid; margin: 0 0 18px; cursor: zoom-in; }
+.gallery img { width: 100%; height: auto; aspect-ratio: auto; object-fit: initial; border-radius: 3px; }
+.gallery figcaption { font-size: 14px; color: var(--muted); margin-top: 6px; line-height: 1.5; }
+.lightbox .lb-close { position: absolute; top: 14px; right: 18px; }
+.lightbox .lb-prev, .lightbox .lb-next {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  background: rgba(255,255,255,.12); border: 0; color: #fff; font-size: 34px;
+  width: 48px; height: 48px; border-radius: 50%; cursor: pointer;
+}
+.lightbox .lb-prev { left: 16px; } .lightbox .lb-next { right: 16px; }
+.lightbox .lb-prev:hover, .lightbox .lb-next:hover { background: rgba(255,255,255,.25); }
+.lightbox img { max-height: 80vh; max-width: calc(100% - 120px); }
+@media (max-width: 760px) { .lightbox img { max-width: 100%; } .lightbox .lb-prev, .lightbox .lb-next { top: auto; bottom: 16px; transform: none; } }
+/* 갤러리: 왼쪽→오른쪽 순서대로, 같은 크기 칸에 사진 전체가 보이게 */
+.gallery { display: grid; columns: auto; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 18px 16px; }
+.gallery figure { margin: 0; }
+.gallery img { aspect-ratio: 4 / 3; object-fit: contain; background: #eef2f1; }

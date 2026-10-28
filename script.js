@@ -84,23 +84,37 @@ const FOOTER = "© " + new Date().getFullYear() + " Yeom Lab. All rights reserve
     show(0); restart();
   });
 
-  /* ---------- 갤러리 확대 보기 ---------- */
-  const gallery = document.querySelector(".gallery");
-  if (gallery) {
+  /* ---------- 갤러리 확대 보기 (클릭하면 크게, ‹ › 로 넘기기) ---------- */
+  const figs = [...document.querySelectorAll(".gallery figure")];
+  if (figs.length) {
     const lb = document.createElement("div");
     lb.className = "lightbox";
-    lb.innerHTML = `<button aria-label="닫기">×</button><img alt=""><p></p>`;
+    lb.innerHTML = `<button class="lb-close" aria-label="닫기">×</button>
+      <button class="lb-prev" aria-label="이전 사진">‹</button>
+      <img alt=""><p></p>
+      <button class="lb-next" aria-label="다음 사진">›</button>`;
     document.body.append(lb);
+    const img = lb.querySelector("img"), cap = lb.querySelector("p");
+    let cur = 0;
+    const open = (k) => {
+      cur = (k + figs.length) % figs.length;
+      const f = figs[cur];
+      img.src = f.querySelector("img").src;
+      img.alt = f.querySelector("img").alt;
+      cap.textContent = f.querySelector("figcaption")?.textContent || "";
+      lb.classList.add("open");
+    };
     const close = () => lb.classList.remove("open");
-    lb.addEventListener("click", (e) => { if (e.target !== lb.querySelector("img")) close(); });
-    document.addEventListener("keydown", (e) => { if (e.key === "Escape") close(); });
-    gallery.querySelectorAll("figure").forEach((f) => {
-      f.addEventListener("click", () => {
-        const img = f.querySelector("img");
-        lb.querySelector("img").src = img.src;
-        lb.querySelector("p").textContent = f.querySelector("figcaption")?.textContent || "";
-        lb.classList.add("open");
-      });
+    figs.forEach((f, k) => f.addEventListener("click", () => open(k)));
+    lb.querySelector(".lb-close").onclick = close;
+    lb.querySelector(".lb-prev").onclick = (e) => { e.stopPropagation(); open(cur - 1); };
+    lb.querySelector(".lb-next").onclick = (e) => { e.stopPropagation(); open(cur + 1); };
+    lb.addEventListener("click", (e) => { if (e.target === lb) close(); });
+    document.addEventListener("keydown", (e) => {
+      if (!lb.classList.contains("open")) return;
+      if (e.key === "Escape") close();
+      if (e.key === "ArrowLeft") open(cur - 1);
+      if (e.key === "ArrowRight") open(cur + 1);
     });
   }
 })();
