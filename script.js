@@ -44,7 +44,7 @@ const FOOTER = "© " + new Date().getFullYear() + " Yeom Lab. All rights reserve
   document.body.append(footer);
 
   /* ---------- 슬라이드쇼 (페이드 전환 + 자동 넘김 + 직접 넘기기) ---------- */
-  const INTERVAL = 6000;   // 그림이 넘어가는 간격 (밀리초, 6000 = 6초)
+  const INTERVAL = 4000;   // 그림이 넘어가는 간격 (밀리초, 4000 = 4초)
   document.querySelectorAll(".slideshow").forEach((box) => {
     const slides = [...box.querySelectorAll(".slide")];
     const dotsBox = box.parentElement.querySelector(".slide-dots");
