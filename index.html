@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Research | Laboratory of Bacterial Physiology</title>
   <meta name="description" content="Yeom Lab — Laboratory of Bacterial Physiology. How do bacteria respond to environmental stress such as antibiotics and immune response?">
-  <link rel="stylesheet" href="style.css?v=9">
+  <link rel="stylesheet" href="style.css?v=10">
 </head>
 <body>
   <main class="wrap research">
@@ -21,21 +21,20 @@
 
     <p class="question">How do bacteria respond to environmental stress such as antibiotics and immune response?</p>
 
-    <!-- 연구 그림 슬라이드
-         사진 추가: <div class="slide">…</div> 한 줄을 복사해서 파일 이름만 바꾸세요.
-         images 폴더에 파일이 없으면 기존 Wix 이미지를 임시로 보여줍니다. -->
-    <div class="slideshow">
-      <div class="slide"><img src="images/research1.jpg" alt="Research figure 1"
-        onerror="this.onerror=null;this.src='https://static.wixstatic.com/media/2c36ff_6f8769278789463da90565b518d6a6cc~mv2.jpg'"></div>
-      <div class="slide"><img src="images/research2.png" alt="Research figure 2"
-        onerror="this.onerror=null;this.src='https://static.wixstatic.com/media/2c36ff_3998a643ff6e471195798530e0ee5af9~mv2.png'"></div>
-      <div class="slide"><img src="images/research3.png" alt="Research figure 3"
-        onerror="this.onerror=null;this.src='https://static.wixstatic.com/media/2c36ff_4c66ad21f895479a99e1ffed6c68e642~mv2.png'"></div>
-      <button class="slide-btn prev" aria-label="이전">‹</button>
-      <button class="slide-btn next" aria-label="다음">›</button>
+    <!-- 연구 그림 슬라이드 (6초마다 자동으로 넘어가고, 화살표·점·스와이프로 직접 넘길 수 있어요)
+         그림 추가: images/research 폴더에 그림을 넣고
+         아래 <div class="slide">…</div> 한 줄을 복사해 파일 이름만 바꾸세요. -->
+    <div class="slideshow" aria-roledescription="carousel">
+      <div class="slide"><img src="images/research/research1.jpg" alt="Mg2+ transporter regulation by FtsH in Salmonella"></div>
+      <div class="slide"><img src="images/research/research2.jpg" alt="Mesenteric macrophages control systemic inflammation"></div>
+      <div class="slide"><img src="images/research/research3.jpg" alt="ATP-dependent proteolysis and bacterial regrowth"></div>
+      <div class="slide"><img src="images/research/research4.jpg" alt="Protective bacterial antigen structure"></div>
+      <div class="slide"><img src="images/research/research5.jpg" alt="IscR-mediated morphological change in Acinetobacter baumannii"></div>
+      <button class="slide-btn prev" aria-label="이전 그림">‹</button>
+      <button class="slide-btn next" aria-label="다음 그림">›</button>
     </div>
-    <p class="slide-count"></p>
+    <div class="slide-dots"></div>
   </main>
-  <script src="script.js?v=9"></script>
+  <script src="script.js?v=10"></script>
 </body>
 </html>

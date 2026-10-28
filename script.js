@@ -43,20 +43,45 @@ const FOOTER = "© " + new Date().getFullYear() + " Yeom Lab. All rights reserve
   footer.textContent = FOOTER;
   document.body.append(footer);
 
-  /* ---------- 슬라이드쇼 ---------- */
+  /* ---------- 슬라이드쇼 (페이드 전환 + 자동 넘김 + 직접 넘기기) ---------- */
+  const INTERVAL = 6000;   // 그림이 넘어가는 간격 (밀리초, 6000 = 6초)
   document.querySelectorAll(".slideshow").forEach((box) => {
     const slides = [...box.querySelectorAll(".slide")];
-    const count = box.parentElement.querySelector(".slide-count");
+    const dotsBox = box.parentElement.querySelector(".slide-dots");
     let i = 0, timer;
+    const dots = slides.map((_, k) => {
+      const d = document.createElement("button");
+      d.setAttribute("aria-label", `그림 ${k + 1}`);
+      d.onclick = () => { show(k); restart(); };
+      dotsBox && dotsBox.append(d);
+      return d;
+    });
     const show = (n) => {
       i = (n + slides.length) % slides.length;
       slides.forEach((s, k) => s.classList.toggle("show", k === i));
-      if (count) count.textContent = `${i + 1} / ${slides.length}`;
+      dots.forEach((d, k) => d.classList.toggle("on", k === i));
     };
-    const auto = () => { clearInterval(timer); timer = setInterval(() => show(i + 1), 5000); };
-    box.querySelector(".prev").onclick = () => { show(i - 1); auto(); };
-    box.querySelector(".next").onclick = () => { show(i + 1); auto(); };
-    show(0); auto();
+    const restart = () => { clearInterval(timer); timer = setInterval(() => show(i + 1), INTERVAL); };
+    box.querySelector(".prev").onclick = () => { show(i - 1); restart(); };
+    box.querySelector(".next").onclick = () => { show(i + 1); restart(); };
+    // 마우스를 올리면 잠시 멈춤
+    box.addEventListener("mouseenter", () => clearInterval(timer));
+    box.addEventListener("mouseleave", restart);
+    // 휴대폰에서 좌우로 밀어 넘기기
+    let x0 = null;
+    box.addEventListener("touchstart", (e) => { x0 = e.touches[0].clientX; }, { passive: true });
+    box.addEventListener("touchend", (e) => {
+      if (x0 === null) return;
+      const dx = e.changedTouches[0].clientX - x0;
+      if (Math.abs(dx) > 40) { show(i + (dx < 0 ? 1 : -1)); restart(); }
+      x0 = null;
+    });
+    // 키보드 좌우 화살표
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowLeft") { show(i - 1); restart(); }
+      if (e.key === "ArrowRight") { show(i + 1); restart(); }
+    });
+    show(0); restart();
   });
 
   /* ---------- 갤러리 확대 보기 ---------- */

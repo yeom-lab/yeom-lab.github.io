@@ -272,3 +272,31 @@ main.wrap { width: calc(100% - 200px); padding-left: 44px; padding-right: 44px; 
 @media (max-width: 1100px) and (min-width: 761px) {
   main.wrap, .header-inner { width: calc(100% - 64px); }
 }
+
+/* ---------- 첫 화면 연구 그림 슬라이드 (페이드) ---------- */
+.slideshow {
+  position: relative; background: #fff; overflow: hidden;
+  height: clamp(260px, 40vw, 520px);
+  border: 1px solid var(--line); border-radius: 4px; margin-top: 8px;
+}
+.slideshow .slide {
+  display: block; position: absolute; inset: 0; padding: 20px 64px;
+  opacity: 0; visibility: hidden;
+  transition: opacity 1s ease, visibility 0s linear 1s;
+}
+.slideshow .slide.show { opacity: 1; visibility: visible; transition: opacity 1s ease, visibility 0s; }
+.slideshow .slide img { width: 100%; height: 100%; object-fit: contain; margin: 0; }
+.slide-btn { z-index: 2; opacity: .55; transition: opacity .2s; }
+.slideshow:hover .slide-btn { opacity: 1; }
+.slide-dots { display: flex; justify-content: center; gap: 10px; margin: 14px 0 0; }
+.slide-dots button {
+  width: 10px; height: 10px; border-radius: 50%; border: 0; padding: 0;
+  background: #c9d3d2; cursor: pointer;
+}
+.slide-dots button.on { background: var(--teal); }
+@media (max-width: 760px) {
+  .slideshow { height: 64vw; }
+  .slideshow .slide { padding: 10px 36px; }
+  .slide-btn { width: 32px; height: 32px; font-size: 18px; }
+}
+@media (prefers-reduced-motion: reduce) { .slideshow .slide { transition: none; } }
