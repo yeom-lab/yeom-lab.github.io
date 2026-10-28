@@ -261,10 +261,10 @@ h1.page-title { font-family: Verdana, "DejaVu Sans", Tahoma, sans-serif; }
 @media (max-width: 760px) { .research .lead { font-size: 16px; } .research .question { font-size: 17px; } }
 
 /* 흰 본문 상자 폭 넓힘 */
-:root { --max: 1440px; }
-main.wrap { width: calc(100% - 64px); padding-left: 48px; padding-right: 48px; }
-.header-inner { padding-left: 32px; padding-right: 32px; }
+:root { --max: 1320px; }
+main.wrap { width: calc(100% - 128px); padding-left: 44px; padding-right: 44px; }
+.header-inner { width: calc(100% - 128px); padding-left: 44px; padding-right: 44px; }
 @media (max-width: 760px) {
   main.wrap { width: 100%; padding-left: 16px; padding-right: 16px; }
-  .header-inner { padding-left: 16px; padding-right: 16px; }
+  .header-inner { width: 100%; padding-left: 16px; padding-right: 16px; }
 }
