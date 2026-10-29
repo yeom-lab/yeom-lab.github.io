@@ -333,3 +333,5 @@ main.wrap { width: calc(100% - 200px); padding-left: 44px; padding-right: 44px; 
 .album-badge { position: absolute; z-index: 3; right: 10px; bottom: 10px; background: rgba(0,0,0,.62); color: #fff; font-size: 12px; padding: 4px 9px; border-radius: 12px; letter-spacing: .3px; }
 .album-photos { display: none; }
 .lightbox.single .lb-prev, .lightbox.single .lb-next { display: none; }
+/* 휴대폰에서 로고 조금 크게 */
+@media (max-width: 760px) { .brand { flex: 1 1 auto; } .brand img.brand-logo { height: auto; margin-bottom: 4px; width: min(340px, calc(100vw - 110px)); max-width: none; } }
