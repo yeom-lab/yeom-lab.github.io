@@ -84,7 +84,8 @@ const FOOTER = "© " + new Date().getFullYear() + " Yeom Lab. All rights reserve
     show(0); restart();
   });
 
-  /* ---------- 갤러리 확대 보기 (클릭하면 크게, ‹ › 로 넘기기) ---------- */
+  /* ---------- 갤러리 확대 보기 (클릭하면 크게, ‹ › 로 넘기기) ----------
+     앨범(<figure class="album">)은 클릭하면 그 안의 사진들만 넘겨 봅니다. */
   const figs = [...document.querySelectorAll(".gallery figure")];
   if (figs.length) {
     const lb = document.createElement("div");
@@ -95,17 +96,36 @@ const FOOTER = "© " + new Date().getFullYear() + " Yeom Lab. All rights reserve
       <button class="lb-next" aria-label="다음 사진">›</button>`;
     document.body.append(lb);
     const img = lb.querySelector("img"), cap = lb.querySelector("p");
-    let cur = 0;
+    const capOf = (f) => f.querySelector("figcaption")?.textContent || "";
+    // 일반 사진들: 서로 넘겨 보기
+    const singles = figs.filter((f) => !f.classList.contains("album"))
+      .map((f) => ({ src: f.querySelector("img").src, alt: f.querySelector("img").alt, cap: capOf(f), fig: f }));
+    let list = singles, cur = 0, title = "";
     const open = (k) => {
-      cur = (k + figs.length) % figs.length;
-      const f = figs[cur];
-      img.src = f.querySelector("img").src;
-      img.alt = f.querySelector("img").alt;
-      cap.textContent = f.querySelector("figcaption")?.textContent || "";
+      cur = (k + list.length) % list.length;
+      const it = list[cur];
+      img.src = it.src; img.alt = it.alt;
+      cap.textContent = title
+        ? `${title} — ${it.cap ? it.cap + " " : ""}(${cur + 1} / ${list.length})`
+        : it.cap;
+      lb.classList.toggle("single", list.length < 2);
       lb.classList.add("open");
     };
+    singles.forEach((it, k) => it.fig.addEventListener("click", () => { list = singles; title = ""; open(k); }));
+    // 앨범: 표지 + 사진 장수 표시, 클릭하면 앨범 사진만 보기
+    figs.filter((f) => f.classList.contains("album")).forEach((f) => {
+      const photos = [...f.querySelectorAll(".album-photos img")].map((im) => ({
+        src: im.getAttribute("src"), alt: im.alt, cap: im.dataset.caption || "" }));
+      if (!photos.length) return;
+      const cover = f.querySelector(":scope > img") || Object.assign(document.createElement("img"), { src: photos[0].src, alt: photos[0].alt });
+      if (!cover.parentNode) f.prepend(cover);
+      const wrap = document.createElement("div");
+      wrap.className = "album-cover";
+      cover.replaceWith(wrap); wrap.append(cover);
+      wrap.insertAdjacentHTML("beforeend", `<span class="album-badge">▣ ${photos.length} photos</span>`);
+      f.addEventListener("click", () => { list = photos; title = capOf(f); open(0); });
+    });
     const close = () => lb.classList.remove("open");
-    figs.forEach((f, k) => f.addEventListener("click", () => open(k)));
     lb.querySelector(".lb-close").onclick = close;
     lb.querySelector(".lb-prev").onclick = (e) => { e.stopPropagation(); open(cur - 1); };
     lb.querySelector(".lb-next").onclick = (e) => { e.stopPropagation(); open(cur + 1); };

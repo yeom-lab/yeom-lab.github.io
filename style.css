@@ -322,3 +322,14 @@ main.wrap { width: calc(100% - 200px); padding-left: 44px; padding-right: 44px; 
 .gallery { display: grid; columns: auto; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 18px 16px; }
 .gallery figure { margin: 0; }
 .gallery img { aspect-ratio: 4 / 3; object-fit: contain; background: #eef2f1; }
+
+/* 갤러리 앨범 (여러 장을 한 칸에 모아 보기) */
+.gallery figure { cursor: zoom-in; }
+.album-cover { position: relative; margin: 0 6px 6px 0; }
+.album-cover img { position: relative; z-index: 2; display: block; }
+.album-cover::before, .album-cover::after { content: ""; position: absolute; inset: 0; border-radius: 3px; background: #dfe7e6; border: 1px solid #c9d6d4; }
+.album-cover::before { transform: translate(6px, 6px); z-index: 0; }
+.album-cover::after { transform: translate(3px, 3px); z-index: 1; background: #e9efee; }
+.album-badge { position: absolute; z-index: 3; right: 10px; bottom: 10px; background: rgba(0,0,0,.62); color: #fff; font-size: 12px; padding: 4px 9px; border-radius: 12px; letter-spacing: .3px; }
+.album-photos { display: none; }
+.lightbox.single .lb-prev, .lightbox.single .lb-next { display: none; }
