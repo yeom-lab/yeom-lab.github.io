@@ -106,7 +106,7 @@ const FOOTER = "© " + new Date().getFullYear() + " Yeom Lab. All rights reserve
       const it = list[cur];
       img.src = it.src; img.alt = it.alt;
       cap.textContent = title
-        ? `${title} — ${it.cap ? it.cap + " " : ""}(${cur + 1} / ${list.length})`
+        ? `${title}${it.cap ? " — " + it.cap : ""} (${cur + 1} / ${list.length})`
         : it.cap;
       lb.classList.toggle("single", list.length < 2);
       lb.classList.add("open");
